@@ -1,0 +1,9 @@
+<main>
+    <form class="login-container" [formGroup]="loginForm" (ngSubmit)="fazerLogin()">
+        <h2>Login</h2>
+        <div class="error" id="error">{{ falhaLogin }}</div>
+        <input type="usuario" id="usuario" placeholder="Usuário" formControlName="usuario" name="usuario">
+        <input type="password" id="senha" placeholder="Senha" formControlName="senha" name="senha">
+        <button id="loginBtn" type="submit" [disabled]="!loginForm.valid">Entrar</button>
+    </form>
+</main>
