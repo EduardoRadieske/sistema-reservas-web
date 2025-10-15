@@ -1,0 +1,17 @@
+<mat-toolbar>
+  <button matIconButton (click)="goToHome()" class="home-buttom" aria-label="Home" title="Home">
+    <mat-icon>home</mat-icon>
+  </button>
+  <span>Sistema de Reservas de Salas</span>
+  <span class="example-spacer"></span>
+  
+  @if (userRole == 'admin') {
+    <button matIconButton class="settings-icon" aria-label="Usuário">
+      <mat-icon>settings</mat-icon>
+    </button>
+  }
+ 
+  <button matIconButton (click)="logout()" class="logout-icon" aria-label="Logout" title="Logout">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>

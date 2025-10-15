@@ -1,0 +1,24 @@
+<div class="overlay">
+  <div class="popup">
+    <button class="fechar-btn" (click)="fecharPopup()">✖</button>
+
+    <h2>Detalhes da Reserva</h2>
+
+    <div class="info">
+      <p><strong>ID:</strong> {{ reserva.id }}</p>
+      <p><strong>Sala:</strong> {{ reserva.sala }}</p>
+      <p><strong>Usuário:</strong> {{ reserva.usuario }}</p>
+      <p><strong>Horário:</strong> {{ reserva.horario }}</p>
+    </div>
+
+    <div class="senha-container">
+      <label><strong>Senha:</strong></label>
+      <span class="senha">
+        {{ senhaVisivel ? reserva.senha : '••••••••' }}
+      </span>
+      <button class="toggle-senha-btn" (click)="toggleSenha()">
+        {{ senhaVisivel ? 'Ocultar' : 'Visualizar' }}
+      </button>
+    </div>
+  </div>
+</div>

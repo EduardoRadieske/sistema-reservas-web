@@ -1,11 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet, Router } from '@angular/router';
 import { TokenService } from './core/services/token.service';
+import { HeaderComponent } from "./core/components/header/header.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  template: '<router-outlet/>'
+  imports: [RouterOutlet, HeaderComponent],
+  templateUrl: './app.html',
 })
 export class App implements OnInit {
   private router = inject(Router);
@@ -21,5 +22,9 @@ export class App implements OnInit {
     } else {
       this.router.navigate(['/login']);
     }
+  }
+
+  isLoginPage(): boolean {
+    return this.router.url.includes('/login');
   }
 }

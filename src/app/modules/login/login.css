@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #4e54c8, #8f94fb);
+  background: linear-gradient(135deg, rgb(46, 126, 255), rgb(172, 203, 253));
   font-family: Arial, sans-serif;
   overflow: hidden;      
 }
@@ -20,32 +20,24 @@
     width: 300px;
 }
 
-.login-container h2 {
+.login-container .h2-login {
     margin-bottom: 20px;
     text-align: center;
-    color: #333;
+    color: rgb(46, 126, 255);
 }
 
-.login-container input {
+.login-container .button-login {
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.login-container button {
-    width: 100%;
-    padding: 10px;
-    background-color: #4e54c8;
+    background-color: rgb(46, 126, 255);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.login-container button:hover {
-    background-color: #3b40a0;
+.login-container .button-login:hover {
+    background-color: rgb(46, 126, 255);
 }
 
 .error {
@@ -53,4 +45,8 @@
     font-size: 0.9em;
     text-align: center;
     margin-bottom: 10px;
+}
+
+.campo-login {
+    width: 100%;
 }

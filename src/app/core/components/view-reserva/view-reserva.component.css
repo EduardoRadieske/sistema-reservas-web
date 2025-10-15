@@ -1,0 +1,73 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup {
+  background: #fff;
+  color: #222;
+  padding: 2rem;
+  border-radius: 10px;
+  min-width: 350px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+.fechar-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 36px;
+}
+
+.fechar-btn:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.info p {
+  margin: 5px 0;
+}
+
+.senha-container {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.senha {
+  font-family: monospace;
+  background: #f0f0f0;
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+
+.toggle-senha-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.toggle-senha-btn:hover {
+  background-color: #0056b3;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}

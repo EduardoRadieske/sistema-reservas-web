@@ -1,1 +1,37 @@
-<p>home works!</p>
+<div class="home-container">
+    <div class="home-header">
+        <h2>Minhas Reservas</h2>
+        <button mat-raised-button color="primary" (click)="criarReserva()">
+            <mat-icon>add</mat-icon>
+            Nova Reserva
+        </button>
+    </div>
+
+    @if (reservas.length > 0) {
+        <mat-card class="reservas-card">
+            <mat-list class="list-reservas">
+                @for (reserva of reservas; track reserva.id) {
+                <mat-list-item class="list-item-reserva" (click)="verDetalhes(reserva)">
+                    <mat-icon matListIcon>event</mat-icon>
+                    <div matLine>{{ reserva.sala }}</div>
+                    <div matLine class="secondary">
+                        {{ reserva.data | date: 'shortDate' }} — {{ reserva.horario }}
+                    </div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                }
+            </mat-list>
+        </mat-card>
+    } @else {
+        <mat-card class="empty-card">
+            <mat-icon color="accent" class="empty-icon">event_busy</mat-icon>
+            <p>Nenhuma reserva encontrada.</p>
+        </mat-card>
+    }
+
+    @if (mostrarPopup) {
+        <app-view-reserva [reservaId]="reservaSelecionadaId" (fechar)="mostrarPopup = false">
+        </app-view-reserva>
+    }
+    
+</div>

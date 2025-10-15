@@ -1,9 +1,25 @@
 <main>
     <form class="login-container" [formGroup]="loginForm" (ngSubmit)="fazerLogin()">
-        <h2>Login</h2>
+        <h2 class="h2-login">Login</h2>
         <div class="error" id="error">{{ falhaLogin }}</div>
-        <input type="usuario" id="usuario" placeholder="Usuário" formControlName="usuario" name="usuario">
-        <input type="password" id="senha" placeholder="Senha" formControlName="senha" name="senha">
-        <button id="loginBtn" type="submit" [disabled]="!loginForm.valid">Entrar</button>
+        <mat-form-field class="campo-login">
+            <mat-label>Usuário</mat-label>
+            <input matInput id="usuario" placeholder="Usuário" formControlName="usuario" name="usuario">
+        </mat-form-field>
+        <mat-form-field class="campo-login">
+            <mat-label>Informe a sua senha</mat-label>
+            <input matInput [type]="hide() ? 'password' : 'text'" id="senha" placeholder="Senha" formControlName="senha" name="senha" />
+            <button
+            matIconButton
+            matSuffix
+            type="button"
+            (click)="exibirSenha($event)"
+            [attr.aria-label]="'Exibir senha'"
+            [attr.aria-pressed]="hide()"
+            >
+            <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <button id="loginBtn" type="submit" class="button-login" [disabled]="!loginForm.valid">Entrar</button>
     </form>
 </main>
