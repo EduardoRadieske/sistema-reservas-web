@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
-import { Login } from './modules/login/login';
 import { App } from './app';
-import { Home } from './modules/home/home';
-import { Reservas } from './modules/reservas/reservas';
+import { Login } from './pages/login/login';
+import { Home } from './pages/home/home';
+import { Reservas } from './pages/reservas/reservas';
+import { Configs } from './pages/configs/configs';
 
 export const routes: Routes = [
     {
@@ -16,10 +17,13 @@ export const routes: Routes = [
     {
         path: 'home',
         component: Home
-    }
-    ,
+    },
     {
         path: 'reservas',
         component: Reservas
+    },
+    {
+        path: 'config',
+        component: Configs
     }
 ];

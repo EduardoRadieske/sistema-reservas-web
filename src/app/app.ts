@@ -2,11 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet, Router } from '@angular/router';
 import { TokenService } from './core/services/token.service';
 import { HeaderComponent } from "./core/components/header/header.component";
+import { ToastComponent } from "./core/components/toast/toast.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent],
-  templateUrl: './app.html',
+  imports: [RouterOutlet, HeaderComponent, ToastComponent],
+  templateUrl: './app.html'
 })
 export class App implements OnInit {
   private router = inject(Router);

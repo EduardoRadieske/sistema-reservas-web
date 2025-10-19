@@ -6,13 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { Router } from '@angular/router';
 import { ViewReservaComponent } from '../../core/components/view-reserva/view-reserva.component';
-
-interface Reserva {
-  id: number;
-  sala: string;
-  data: Date;
-  horario: string;
-}
+import { ReservasService } from '../../core/services/reservas.service';
+import { Reserva } from '../../models/reserva.interface';
 
 @Component({
   selector: 'app-home',
@@ -23,18 +18,31 @@ interface Reserva {
 export class Home implements OnInit {
 
   private router = inject(Router);
+  private reservasService = inject(ReservasService);
 
   reservas: Reserva[] = [];
 
   mostrarPopup = false;
-  reservaSelecionadaId: number = 0;
+  reservaSelecionada!: Reserva;
 
-  ngOnInit(): void {
-    // mock inicial (futuro: buscar da API)
-    this.reservas = [
-      { id: 1, sala: 'Sala 101', data: new Date(), horario: '08:00 - 09:00' },
-      { id: 2, sala: 'Laboratório 2', data: new Date(), horario: '10:00 - 11:00' },
-    ];
+  async ngOnInit() {
+    const listaReservas = await this.reservasService.buscarReservas();
+
+    this.reservas = listaReservas.map((r: any): Reserva  => {
+      const inicio = new Date(r.dataReservaInicial);
+      const fim = new Date(r.dataReservaFinal);
+
+      const formatHora = (d: Date) =>
+          `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+
+      return {
+        id: r.idReserva,
+        sala: r.sala.nome,
+        usuario: r.usuario.nome,
+        data: inicio,
+        horario: `${formatHora(inicio)} - ${formatHora(fim)}`
+      };
+    });
   }
 
   criarReserva() {
@@ -42,8 +50,8 @@ export class Home implements OnInit {
   }
 
   verDetalhes(reserva: Reserva) {
-    this.reservaSelecionadaId = reserva.id;
+    this.reservaSelecionada = reserva;
     this.mostrarPopup = true;
   }
-  
+
 }

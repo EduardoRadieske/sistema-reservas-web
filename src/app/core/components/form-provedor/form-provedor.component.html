@@ -1,0 +1,39 @@
+<div class="provedor-container">
+  <h2>Cadastrar Provedor</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="provedor-form">
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Nome do Provedor</mat-label>
+      <mat-select formControlName="provedor">
+        @for (p of provedores; track p.provedor) {
+          <mat-option [value]="p">{{ p.nomeProvedor }}</mat-option>
+        }
+      </mat-select>
+      @if (form.get('provedor')?.invalid && form.get('provedor')?.touched) {
+        <mat-error>Selecione um provedor</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Client ID</mat-label>
+      <input matInput formControlName="clientId" placeholder="Insira o client ID" />
+      @if (form.get('clientId')?.invalid && form.get('clientId')?.touched) {
+        <mat-error>Informe um Client ID válido</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Client Secret</mat-label>
+      <input matInput formControlName="secret" placeholder="Insira o secret" />
+      @if (form.get('secret')?.invalid && form.get('secret')?.touched) {
+        <mat-error>Informe o secret do provedor</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="botoes">
+      <button mat-flat-button color="primary" type="submit">Salvar</button>
+      <button mat-stroked-button color="warn" type="reset">Limpar</button>
+    </div>
+  </form>
+</div>

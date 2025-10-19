@@ -1,10 +1,6 @@
 import { Injectable } from "@angular/core";
 import { environment } from "../../../environments/environment";
-
-interface TempLogin {
-    usuario: string,
-    senha: string
-}
+import { TempLogin } from "../../models/usuario.interface";
 
 @Injectable({
     providedIn: 'root'

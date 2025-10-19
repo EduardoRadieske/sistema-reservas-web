@@ -22,32 +22,20 @@ form {
   gap: 1rem;
 }
 
-label {
+.flex {
   display: flex;
-  flex-direction: column;
-  font-weight: 500;
-  color: rgb(46, 126, 255);
 }
 
-input {
-  padding: 0.6rem;
-  border: 1px solid #b5c8e6;
-  border-radius: 0.5rem;
-  background-color: #ffffff;
-  color: #0f1a2f;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-input:focus {
-  border-color: #4a90e2;
-  box-shadow: 0 0 5px rgba(74, 144, 226, 0.4);
-  outline: none;
-}
-
-.horarios {
-  display: flex;
-  justify-content: space-between;
+.gap-4 {
   gap: 1rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.flex-1 {
+  flex: 1;
 }
 
 button {

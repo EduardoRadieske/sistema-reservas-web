@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Reserva } from '../../../models/reserva.interface';
+import { ReservasService } from '../../services/reservas.service';
 
 @Component({
   selector: 'app-view-reserva',
@@ -6,29 +8,31 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   templateUrl: './view-reserva.component.html',
   styleUrl: './view-reserva.component.css'
 })
-export class ViewReservaComponent implements OnInit {
-  @Input() reservaId!: number;
+export class ViewReservaComponent {
+  @Input() reserva!: Reserva;
   @Output() fechar = new EventEmitter<void>();
 
-  reserva: any = null;
+  private reservaService = inject(ReservasService);
+
   senhaVisivel = false;
 
-  ngOnInit(): void {
-    // Exemplo mockado de carregamento de dados:
-    this.reserva = {
-      id: this.reservaId,
-      sala: 'Laboratório 2',
-      usuario: 'Eduardo Radieske',
-      horario: '14:00 - 15:00',
-      senha: 'ABCD-1234'
-    };
-  }
+  senhaTemporaria: string = '';
 
-  toggleSenha(): void {
+  async toggleSenha() {
+    await this.atualizarSenha();
+
     this.senhaVisivel = !this.senhaVisivel;
   }
 
-  fecharPopup(): void {
+  fecharPopup() {
     this.fechar.emit();
+  }
+
+  async atualizarSenha() {
+    if (!this.senhaTemporaria) {
+      const senhaObj = await this.reservaService.buscarSenhaReserva(this.reserva.id);
+
+      this.senhaTemporaria = senhaObj.codigo;
+    }
   }
 }

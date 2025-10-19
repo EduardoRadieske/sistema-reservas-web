@@ -1,0 +1,44 @@
+<div class="sala-container">
+  <h2>Cadastrar Sala</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="sala-form">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nome da Sala</mat-label>
+      <input matInput formControlName="nome" placeholder="Ex: Sala de Reunião 1" />
+      @if (form.get('nome')?.invalid && form.get('nome')?.touched) {
+        <mat-error>Informe o nome da sala (máx. 100 caracteres)</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Descrição</mat-label>
+      <textarea
+        matInput
+        rows="3"
+        formControlName="descricao"
+        placeholder="Descrição opcional da sala"
+      ></textarea>
+      @if (form.get('descricao')?.invalid && form.get('descricao')?.touched) {
+        <mat-error>Máximo de 1000 caracteres</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Fechadura</mat-label>
+      <mat-select formControlName="fechadura">
+        @for (f of fechaduras; track f.idFechadura) {
+          <mat-option [value]="f">{{ f.chaveDispositivo }}</mat-option>
+        }
+      </mat-select>
+      @if (form.get('fechadura')?.invalid && form.get('fechadura')?.touched) {
+        <mat-error>Selecione uma fechadura</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="botoes">
+      <button mat-flat-button color="primary" type="submit">Salvar</button>
+      <button mat-stroked-button color="warn" type="reset">Limpar</button>
+    </div>
+  </form>
+</div>

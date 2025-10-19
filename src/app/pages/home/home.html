@@ -30,7 +30,7 @@
     }
 
     @if (mostrarPopup) {
-        <app-view-reserva [reservaId]="reservaSelecionadaId" (fechar)="mostrarPopup = false">
+        <app-view-reserva [reserva]="reservaSelecionada" (fechar)="mostrarPopup = false">
         </app-view-reserva>
     }
     

@@ -1,0 +1,31 @@
+<div class="fechadura-container">
+  <h2>Cadastrar Fechadura</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="fechadura-form">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Provedor</mat-label>
+      <mat-select formControlName="provedor">
+        @for (p of provedores; track p.idProvedor) {
+          <mat-option [value]="p">{{ p.idProvedor }} - {{ getDescricaoProvedor(p.provedor) }}</mat-option>
+        }
+      </mat-select>
+      @if (form.get('provedor')?.invalid && form.get('provedor')?.touched) {
+        <mat-error>Selecione um provedor</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Chave do Dispositivo</mat-label>
+      <input matInput formControlName="chaveDispositivo" placeholder="Ex: chave_12345" />
+      @if (form.get('chaveDispositivo')?.invalid && form.get('chaveDispositivo')?.touched) {
+        <mat-error>Informe uma chave válida (máx. 500 caracteres)</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="botoes">
+      <button mat-flat-button color="primary" type="submit">Salvar</button>
+      <button mat-stroked-button color="warn" type="reset">Limpar</button>
+    </div>
+  </form>
+</div>

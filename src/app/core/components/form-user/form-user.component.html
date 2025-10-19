@@ -1,0 +1,53 @@
+<div class="usuarios-container">
+  <h2>Cadastrar Usuário</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="usuarios-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Nome completo</mat-label>
+      <input matInput formControlName="nome" placeholder="Ex: João da Silva" />
+      @if (form.get('nome')?.invalid && form.get('nome')?.touched) {
+        <mat-error>Informe um nome válido (até 100 caracteres)</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Usuário</mat-label>
+      <input matInput formControlName="usuario" placeholder="Ex: joaosilva" />
+      @if (form.get('usuario')?.invalid && form.get('usuario')?.touched) {
+        <mat-error>Informe um nome de usuário válido</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Senha</mat-label>
+      <input matInput [type]="hide() ? 'password' : 'text'" id="senhaHash" placeholder="Senha" formControlName="senhaHash" name="senhaHash" placeholder="Mínimo 6 caracteres" />
+      <button matIconButton
+            matSuffix
+            type="button"
+            (click)="exibirSenha($event)"
+            [attr.aria-label]="'Exibir senha'"
+            [attr.aria-pressed]="hide()"
+            >
+            <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+      @if (form.get('senhaHash')?.invalid && form.get('senhaHash')?.touched) {
+        <mat-error>Senha deve conter ao menos 6 caracteres</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tipo de usuário</mat-label>
+      <mat-select formControlName="tipo">
+        @for (tipo of tiposUsuario; track tipo.value) {
+          <mat-option [value]="tipo.value">{{ tipo.label }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <div class="botoes">
+      <button mat-flat-button color="primary" type="submit">Cadastrar</button>
+      <button mat-stroked-button color="warn" type="reset">Limpar</button>
+    </div>
+  </form>
+  <p class="mensagem" >{{ mensagem }}</p>
+</div>

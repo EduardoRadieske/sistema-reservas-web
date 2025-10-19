@@ -26,4 +26,8 @@ export class HeaderComponent {
     this.tokenService.removeToken();
     this.router.navigate(['/login']);
   }
+
+  goToConfigs() {
+    this.router.navigate(['/config']);
+  }
 }

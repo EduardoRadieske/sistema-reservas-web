@@ -6,7 +6,7 @@
   <span class="example-spacer"></span>
   
   @if (userRole == 'admin') {
-    <button matIconButton class="settings-icon" aria-label="Usuário">
+    <button matIconButton class="settings-icon" (click)="goToConfigs()" aria-label="Configurações">
       <mat-icon>settings</mat-icon>
     </button>
   }

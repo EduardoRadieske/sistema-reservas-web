@@ -14,7 +14,7 @@
     <div class="senha-container">
       <label><strong>Senha:</strong></label>
       <span class="senha">
-        {{ senhaVisivel ? reserva.senha : '••••••••' }}
+        {{ senhaVisivel ? senhaTemporaria : '••••••••' }}
       </span>
       <button class="toggle-senha-btn" (click)="toggleSenha()">
         {{ senhaVisivel ? 'Ocultar' : 'Visualizar' }}

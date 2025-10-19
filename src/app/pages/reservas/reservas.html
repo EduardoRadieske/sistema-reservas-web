@@ -1,0 +1,47 @@
+<div class="reserva-container">
+  <h2>Cadastrar Reserva</h2>
+
+  <form [formGroup]="reservaForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Sala</mat-label>
+      <mat-select formControlName="idSala">
+        @for(sala of salas; track sala.idSala) {
+          <mat-option [value]="sala.idSala">
+            {{ sala.nome }}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+     <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Data</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="data"
+        placeholder="Selecione a data"
+      />
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="flex gap-4">
+      <mat-form-field appearance="outline" class="flex-1">
+        <mat-label>Início</mat-label>
+        <input matInput type="time" formControlName="horaInicio" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="flex-1">
+        <mat-label>Fim</mat-label>
+        <input matInput type="time" formControlName="horaFim" />
+      </mat-form-field>
+    </div>
+
+    <button type="submit" [disabled]="carregando || reservaForm.invalid">
+      {{ carregando ? 'Salvando...' : 'Cadastrar' }}
+    </button>
+  </form>
+
+  <p class="mensagem" >{{ mensagem }}</p>
+</div>
