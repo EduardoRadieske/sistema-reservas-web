@@ -30,7 +30,7 @@ export class Reservas implements OnInit {
   mensagem: string = '';
 
   reservaForm = new FormGroup({
-    idSala: new FormControl<number | null>(null, Validators.required),
+    sala: new FormControl<Sala | null>(null, Validators.required),
     data: new FormControl('', Validators.required),
     horaInicio: new FormControl('', Validators.required),
     horaFim: new FormControl('', Validators.required)
@@ -62,7 +62,7 @@ export class Reservas implements OnInit {
     try {
       await this.reservaService.registrarReserva({
         "usuario": { "idUsuario": userId },
-        "sala": { "idSala": this.reservaForm.value.idSala },
+        "sala": { "idSala": this.reservaForm.value.sala!.idSala },
         "dataReservaInicial": dataInicial,
         "dataReservaFinal": dataFinal,
       });

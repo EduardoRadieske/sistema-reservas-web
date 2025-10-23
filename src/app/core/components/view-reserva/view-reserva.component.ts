@@ -9,7 +9,7 @@ import { ReservasService } from '../../services/reservas.service';
   styleUrl: './view-reserva.component.css'
 })
 export class ViewReservaComponent {
-  @Input() reserva!: Reserva;
+  @Input({ required: true }) reserva!: Reserva;
   @Output() fechar = new EventEmitter<void>();
 
   private reservaService = inject(ReservasService);

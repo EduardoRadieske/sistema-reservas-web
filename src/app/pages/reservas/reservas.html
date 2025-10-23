@@ -4,23 +4,19 @@
   <form [formGroup]="reservaForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="outline" class="w-full">
       <mat-label>Sala</mat-label>
-      <mat-select formControlName="idSala">
+      <mat-select formControlName="sala" placeholder="Selecione a sala">
         @for(sala of salas; track sala.idSala) {
-          <mat-option [value]="sala.idSala">
-            {{ sala.nome }}
-          </mat-option>
+        <mat-option [value]="sala">
+          {{ sala.nome }}
+        </mat-option>
         }
       </mat-select>
+      <mat-hint>{{ reservaForm.value.sala?.descricao || '' }}</mat-hint>
     </mat-form-field>
 
-     <mat-form-field appearance="outline" class="w-full">
+    <mat-form-field appearance="outline" class="w-full">
       <mat-label>Data</mat-label>
-      <input
-        matInput
-        [matDatepicker]="picker"
-        formControlName="data"
-        placeholder="Selecione a data"
-      />
+      <input matInput [matDatepicker]="picker" formControlName="data" placeholder="Selecione a data" />
       <mat-hint>DD/MM/YYYY</mat-hint>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
@@ -43,5 +39,5 @@
     </button>
   </form>
 
-  <p class="mensagem" >{{ mensagem }}</p>
+  <p class="mensagem">{{ mensagem }}</p>
 </div>
