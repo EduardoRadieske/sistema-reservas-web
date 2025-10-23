@@ -29,7 +29,7 @@ export class FormProvedorComponent {
   provedores: Provedor[] = PROVEDORES_DISPONIVEIS;
 
   form = new FormGroup({
-    provedor: new FormControl('', [Validators.required]),
+    provedor: new FormControl<Provedor | null>(null, [Validators.required]),
     clientId: new FormControl('', [Validators.required, Validators.maxLength(500)]),
     secret: new FormControl('', [Validators.required, Validators.maxLength(500)])
   });
@@ -45,7 +45,7 @@ export class FormProvedorComponent {
     try {
 
       await this.provedorService.cadastrar({
-        provedor: provedor.provedor!,
+        provedor: provedor.provedor!.provedor,
         clientId: provedor.clientId!,
         secret: provedor.secret!
       });
