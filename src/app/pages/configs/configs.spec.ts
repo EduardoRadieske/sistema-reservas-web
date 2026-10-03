@@ -9,8 +9,7 @@ describe('Configs', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Configs]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Configs);
     component = fixture.componentInstance;
@@ -19,5 +18,10 @@ describe('Configs', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should allow selecting a menu option', () => {
+    component.handleMenu(component.menu.user);
+    expect(component.menuAtivo).toBe(component.menu.user);
   });
 });

@@ -1,59 +1,80 @@
-# SistemaReservasWeb
+# Sistema Reservas Web
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
+Frontend da aplicação **Sistema de Reservas**, desenvolvido com **Angular 20**.
 
-## Development server
+O projeto faz parte da arquitetura atual do Sistema de Reservas, que possui o frontend e o backend separados:
 
-To start a local development server, run:
+* **Frontend:** Angular
+* **Backend:** Spring Boot / Java
+
+## 🚀 Tecnologias
+
+* Angular 20
+* TypeScript
+* HTML
+* CSS
+
+## ⚙️ Executando o projeto
+
+### Pré-requisitos
+
+* Node.js
+* npm
+* Angular CLI
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Inicie o servidor de desenvolvimento:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+A aplicação estará disponível em:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```text
+http://localhost:4200/
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+O servidor realiza o reload automático sempre que os arquivos do projeto são alterados.
 
-```bash
-ng generate --help
-```
+## 🏗️ Build
 
-## Building
-
-To build the project run:
+Para gerar a versão de produção:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Os arquivos gerados serão disponibilizados no diretório `dist/`.
 
-## Running unit tests
+## 🧪 Testes
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Para executar os testes unitários:
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+## 🔗 Backend
 
-For end-to-end (e2e) testing, run:
+O backend da aplicação está disponível em:
 
-```bash
-ng e2e
-```
+**[Sistema Reservas API](https://github.com/EduardoRadieske/sistema-reservas-api)**
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Desenvolvido utilizando **Spring Boot e Java**.
 
-## Additional Resources
+## 👨‍💻 Autor
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Eduardo Radieske**
+
+🔗 [LinkedIn](https://www.linkedin.com/in/eduardo-radieske-408485238)  
+🌐 [Portfólio](https://radieske.com.br)
+
+---
+
+📚 *Projeto desenvolvido como parte do Trabalho de Conclusão de Curso (TFC), unindo controle e automação com desenvolvimento de software fullstack.*

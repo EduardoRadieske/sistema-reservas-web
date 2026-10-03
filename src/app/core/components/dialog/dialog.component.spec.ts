@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { DialogComponent } from './dialog.component';
 
@@ -8,9 +9,17 @@ describe('DialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DialogComponent]
-    })
-    .compileComponents();
+      imports: [DialogComponent],
+      providers: [
+        {
+          provide: MAT_DIALOG_DATA,
+          useValue: {
+            titulo: 'Confirmação',
+            conteudo: 'Deseja continuar?'
+          }
+        }
+      ]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DialogComponent);
     component = fixture.componentInstance;
@@ -19,5 +28,10 @@ describe('DialogComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should expose dialog data', () => {
+    expect(component.data.titulo).toBe('Confirmação');
+    expect(component.data.conteudo).toBe('Deseja continuar?');
   });
 });
